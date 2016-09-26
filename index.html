@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+	<title>Desafio RDStation</title>
+
+	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+	<header>
+	</header>
+
+	<main>
+    <div id="integration_form"></div>
+	</main>
+
+	<footer>
+	</footer>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+ 	<script type="text/javascript" src="js/jquery.easy.form.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+    (function($){
+      options = {
+        'token':'62bb61431348e22850828a5829c4373faafe29c1',
+        'secret':'51a266c2844ccd5cac83d88de88d82d05358aa51',
+				'modal': false,
+        'fields':{ 'estado':['PR','SC','SP','RS'], 'nivel':['Iniciante','Intermediário','Avançado','Ninja'] }
+      }
+
+      $("#integration_form").easyForm(options);
+    })(jQuery);
+  </script>
+</body>
+
+</html>
