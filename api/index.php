@@ -5,19 +5,18 @@ require("Slim/Slim.php");
 $app = new \Slim\Slim();
 $app->response()->header('Content-Type', 'application/json;charset=utf-8');
 
-$app->get('/teste/', function () use ($app) {
-	$data = array();
+$app->post('/teste/', function () use ($app) {
+	$request = \Slim\Slim::getInstance()->request();
+	$data = json_decode($request->getBody());
 
-	$data[] = array(
-		"id" => 10,
-		"nome" => "Gustavo Kons de Souza",
-		"email" => "gustavokons1@gmail.com",
-		"senha" => "gks300991"
-		);
-
-
-	$json = array("response"=>"ERRO","data"=>$data);
-	$app->response->setStatus(500);
+	if(empty($data->token) || empty($data->secret)) {
+		$app->response->setStatus(500);
+		$json = array("response"=>"ERROR","data"=>"API Token or API Secret invalid!");
+	}
+	else {
+		$json = array("response"=>"OK","data"=>$data->nome);
+	}
+	
 	echo json_encode($json);
 });
 
