@@ -84,6 +84,8 @@ The basic structure of the project is given in the following way:
 |-- js/
 |   |-- jquery.easy.form.js
 |   |-- jquery.easy.form.min.js
+|-- spec/
+|   |-- easy.form.spec.js
 |-- bower.json
 |-- index.html (Demo)
 ```
@@ -95,6 +97,10 @@ Contains API Rest in PHP using Slim Framework
 #### [js/]
 
 Contains JS Plugin and minified file
+
+#### [spec/]
+
+Contains file test using Jasmine
 
 #### [bower_components/]
 
