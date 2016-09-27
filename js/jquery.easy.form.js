@@ -53,7 +53,7 @@
           url: "./api/teste",
           contentType: "application/json",
           dataType: "json",
-          data: JSON.stringify({ token:settings.token, secret:settings.secret, nome:$("#nome").val(), email:$("#email").val() }),
+          data: JSON.stringify({ token:settings.token, secret:settings.secret, lead: { nome:$("#nome").val(), email:$("#email").val(), estado:$("#estado").val(), nivel:$("#nivel").val() } }),
           method: "POST",
           error: function(jqXHR) {
             if(jqXHR.status == 500) {
@@ -61,7 +61,7 @@
             }
           },
           success: function(result){
-            $("#btn-submit-form").after("<div class='alert alert-success' role='alert'>"+result.data.email+" inserted leads database</div>");
+            $("#btn-submit-form").after("<div class='alert alert-success' role='alert'>"+result.data.lead.email+" inserted leads database</div>");
           }
         });
       }
