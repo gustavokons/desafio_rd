@@ -11,13 +11,12 @@ $app->post('/teste/', function () use ($app) {
 
 	if(empty($data->token) || empty($data->secret)) {
 		$app->response->setStatus(500);
-		$json = array("response"=>"ERROR","data"=>"API Token or API Secret invalid!");
 	}
 	else {
-		$json = array("response"=>"OK","data"=>$data->nome);
+		$json = array("data"=>$data);
+		echo json_encode($json);
 	}
-	
-	echo json_encode($json);
+
 });
 
 $app->run();

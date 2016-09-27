@@ -43,16 +43,26 @@
       }
 
       $("#btn-submit-form").on("click", function(){
-        $.ajax({
-          url: "http://gustavokons.com.br/desafio_rd/api/teste",
-          dataType: "json",
-          contentType: "json",
-          data: { token:settings.token, secret:settings.secret, nome:$("#nome").val(), email:$("#email").val() },
-          type: "POST",
-          success: function(result,status){
-            alert(status);
-          }
-        });
+        if($("#nome").val() != "" && $("#email").val() != "") {
+          $.ajax({
+            url: "./api/teste",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify({ token:settings.token, secret:settings.secret, nome:$("#nome").val(), email:$("#email").val() }),
+            method: "POST",
+            error: function(jqXHR) {
+              if(jqXHR.status == 500) {
+                $("#btn-submit-form").after("<div class='alert alert-danger' role='alert'>Token or Secret API invalid!</div>");
+              }
+            },
+            success: function(result){
+              $("#btn-submit-form").after("<div class='alert alert-success' role='alert'>"+result.data.email+" inserted leads database</div>");
+            }
+          });
+        }
+        else {
+          $("#btn-submit-form").after("<div class='alert alert-danger' role='alert'>Os campos Nome e E-mail são obrigatórios!</div>");
+        }
       });
 
     });
