@@ -9,7 +9,7 @@ $app->post('/teste/', function () use ($app) {
 	$request = \Slim\Slim::getInstance()->request();
 	$data = json_decode($request->getBody());
 
-	if(empty($data->token) || empty($data->secret)) {
+	if(empty($data->token) || empty($data->secret) || empty($data->nome) || empty($data->email) ) {
 		$app->response->setStatus(500);
 	}
 	else {

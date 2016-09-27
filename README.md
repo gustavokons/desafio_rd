@@ -42,7 +42,7 @@ Include Bootstrap:
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 ```
 
-Include plugin's CSS and JS:
+Include plugin JS:
 
 ```html
 <script src="js/jquery.easy.form.js"></script>
